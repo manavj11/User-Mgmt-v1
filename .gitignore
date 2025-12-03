@@ -1,0 +1,24 @@
+# .gitignore
+
+# Python Bytecode
+*.pyc
+__pycache__/
+
+# Dependencies and Virtual Environments
+venv/
+env/
+.env
+
+# Flask/Debugging
+*.log
+instance/
+
+# IDE and OS Specific Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Project Specific Files
+# Ignore the local SQLite database file
+backend/users.db
