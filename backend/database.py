@@ -1,6 +1,6 @@
 import sqlite3
 
-DATABASE_NAME = 'users.db'
+DATABASE_NAME = 'backend/users.db'
 
 def initialize_db():
     """Creates the users table if it doesn't exist."""
