@@ -10,7 +10,7 @@ user-mgmt-v1/ ├── .gitignore # Files to ignore for Git ├── README.md
 
 ## ✨ Key Features Demonstrated
 
-1.  **Basic Token Authentication:** The frontend sends a hardcoded `Bearer super-secure-dev-key-12345` token with every request.
+1.  **Basic Token Authentication:** The frontend sends a coded secure-dev-key token with every request.
 2.  **Backend Token Validation:** The `backend/app.py` file checks for this exact token before processing any request.
 3.  **Full-Stack Flow:** Seamless creation and retrieval of user data between the browser, Flask API, and SQLite database.
 
@@ -36,19 +36,13 @@ user-mgmt-v1/ ├── .gitignore # Files to ignore for Git ├── README.md
 
 ### Step 3: Run the Backend Server
 
-1.  Navigate into the `backend` directory:
+1.  Run the Flask application:
 
     ```bash
-    cd backend
+    python backend/app.py 
     ```
-
-2.  Run the Flask application:
-
-    ```bash
-    python app.py
-    ```
-
     You should see output indicating the server is running, typically at `http://127.0.0.1:5000/`.
+
 
 ### Step 4: Access the Frontend
 
