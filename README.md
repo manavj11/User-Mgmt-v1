@@ -1,6 +1,6 @@
-# 🔒 User Management Demo (user-mgmt-v1)
+# 🔒 Auth & User Management App (user-mgmt-v1)
 
-This project is a minimal full-stack application designed to showcase a fundamental concept: **authenticated API calls** using a **Bearer Token** passed via the HTTP **Authorization header**.
+This project is a minimal full-stack application designed to showcase a fundamental user flow for SaaS Apps: **Data Storage** and **authenticated API calls** using a **Bearer Token**.
 
 The backend is built with Python (Flask) and SQLite, and the frontend is a simple HTML/CSS/JavaScript interface.
 
