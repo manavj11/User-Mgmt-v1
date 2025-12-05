@@ -50,10 +50,11 @@ user-mgmt-v1/ ├── .gitignore # Files to ignore for Git ├── README.md
 2.  Navigate to the server address: `http://127.0.0.1:5000/`
 3.  The backend serves the `frontend/index.html` file by default (via the root route `/` in `app.py`).
 
-You can now use the form to create new users and see them appear in the list below. The user list will only load if the correct token is sent with the GET request.
+### Step 5: Create and view users
 
----
+You can now use the form to create new users and see them appear in the list below. 
 
-## 🗑️ .gitignore Content
+The user list will only load if the correct token is sent with the GET request which is established during the session start using placeholder/POC code.
 
-This is a standard set of exclusions for a Python/Flask project to keep the repository clean.
+This can be extended to any authentication method of your choice. Happy user adding!
+
