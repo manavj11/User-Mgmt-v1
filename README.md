@@ -54,7 +54,7 @@ user-mgmt-v1/ ├── .gitignore # Files to ignore for Git ├── README.md
 
 You can now use the form to create new users and see them appear in the list below. 
 
-The user list will only load if the correct token is sent with the GET request which is established during the session start using placeholder/POC code
+The user list will only load if the correct token is sent with the GET request which is established during the session start using placeholder/POC code.
 
 This can be extended to any authentication method of your choice. Happy user adding!
 
