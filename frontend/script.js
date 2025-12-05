@@ -3,14 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('user-form').addEventListener('submit', handleCreateUser);
     
     // Initial fetch to display existing users
-    fetchAndDisplayUsers();
+    // fetchAndDisplayUsers();
+
+    // 💡 FIX: Call the new session function instead of fetchAndDisplayUsers directly
+    loginAndInitialize();
 });
+
 
 // --- 1. Hardcoded Secret Key (Demonstration Only!) ---
 // NOTE: This must match the SECRET_API_KEY in backend/app.py
-const API_TOKEN = "super-secure-dev-key-12345";
-const API_URL = '/api/users';
+// const API_TOKEN = "super-secure-dev-key-12345";
 
+// --- NO Hardcoded API_TOKEN needed anymore! ---
+const API_URL = '/api/users';
+const LOGIN_URL = '/api/login'; // New endpoint
 const messageElement = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -19,6 +25,35 @@ function showMessage(text, isError = false) {
     messageElement.classList.remove('hidden');
     setTimeout(() => messageElement.classList.add('hidden'), 5000);
 }
+
+
+// --- 1. New Function: Establish Session via Login ---
+async function loginAndInitialize() {
+    showMessage("Attempting to establish user session...", false);
+
+    try {
+        const response = await fetch(LOGIN_URL, {
+            method: 'POST',
+            // No need for 'Content-Type': 'application/json' since we aren't sending a body
+        });
+        
+        if (response.ok) {
+            // Flask sets the secure HTTP-only session cookie here.
+            showMessage("Session established successfully. Fetching user list...", false);
+            // Once the session is active, we can fetch the data.
+            fetchAndDisplayUsers();
+        } else {
+            const result = await response.json();
+            showMessage(`Login Failed: ${result.message}. Cannot proceed.`, true);
+        }
+
+    } catch (error) {
+        console.error('Network error during login:', error);
+        showMessage('A network error occurred during login. Check server status.', true);
+    }
+}
+
+
 
 // --- 2. Function to Create User ---
 async function handleCreateUser(event) {
@@ -38,7 +73,7 @@ async function handleCreateUser(event) {
             headers: {
                 'Content-Type': 'application/json',
                 // --- Key Showcase: Basic Token Transfer in the Authorization Header ---
-                'Authorization': `Bearer ${API_TOKEN}` 
+                // 'Authorization': `Bearer ${API_TOKEN}` 
             },
             body: JSON.stringify({ username, email })
         });
@@ -71,7 +106,7 @@ async function fetchAndDisplayUsers() {
             method: 'GET',
             headers: {
                 // --- The token is sent for the GET request as well for validation ---
-                'Authorization': `Bearer ${API_TOKEN}` 
+                // 'Authorization': `Bearer ${API_TOKEN}` 
             }
         });
 
